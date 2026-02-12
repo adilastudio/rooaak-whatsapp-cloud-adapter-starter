@@ -57,9 +57,14 @@ flyctl secrets set \
 - `WHATSAPP_APP_SECRET`: `App settings` -> `Basic` -> `App Secret` -> `Show`.
 - `WHATSAPP_ACCESS_TOKEN`: WhatsApp product `API Setup` page (use a long-lived/system-user token for production).
 
-7. Register Rooaak webhook:
-- URL: `https://<your-host>/webhooks/rooaak`
-- Events: `message.responded`
+7. Register Rooaak webhook (either option):
+- API/curl:
+  - URL: `https://<your-host>/webhooks/rooaak`
+  - Events: `message.responded`
+- Console UI:
+  - Open `Console > Webhooks` (`/console/webhooks`)
+  - Create a webhook with URL `https://<your-host>/webhooks/rooaak`
+  - Select event `message.responded`
 
 ## Run
 
@@ -94,3 +99,8 @@ See `DEPLOYMENT.md` for production details.
 - Replace in-memory dedupe with Redis/Postgres.
 - Add retry/backoff queue for outbound Graph API calls.
 - Persist provider delivery receipts/status updates if your product needs message state sync.
+
+## License and support
+
+- License: MIT (`LICENSE`)
+- Support policy: `SUPPORT.md`
