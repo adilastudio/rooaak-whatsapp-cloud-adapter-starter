@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: rooaak-whatsapp-cloud-adapter-starter
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: PORT
+        value: 8788
+      - key: ROOAAK_API_KEY
+        sync: false
+      - key: ROOAAK_WEBHOOK_SECRET
+        sync: false
+      - key: ROOAAK_AGENT_ID
+        sync: false
+      - key: WHATSAPP_VERIFY_TOKEN
+        sync: false
+      - key: WHATSAPP_ACCESS_TOKEN
+        sync: false
+      - key: WHATSAPP_APP_SECRET
+        sync: false
