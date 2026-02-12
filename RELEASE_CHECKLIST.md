@@ -19,7 +19,7 @@
 
 - [x] Health endpoint responds (`/healthz`)
 - [x] Webhook routes reachable via HTTPS
-- [ ] Meta webhook verification callback configured
+- [x] Meta webhook verification callback configured
 - [x] Rooaak webhook registered for `message.responded`
 
 ## Release ops
@@ -33,4 +33,5 @@
 - Local checks passed: install, tests, syntax, and `/healthz`.
 - Deployed webhook routes are live over HTTPS and return expected auth behavior (`/webhooks/whatsapp` verify endpoint rejects wrong token, `/webhooks/rooaak` rejects unsigned payloads).
 - Rooaak webhook is registered for `message.responded` at `https://rooaak-whatsapp-cloud-adapter-starter.fly.dev/webhooks/rooaak` (id: `c9f3c2d9-a085-449f-a6b1-3d2ead073a04`).
-- Remaining unchecked items require Meta app callback configuration + live WhatsApp sandbox smoke test.
+- Meta webhook verification callback reported configured by operator.
+- Remaining unchecked items require live WhatsApp sandbox smoke test.

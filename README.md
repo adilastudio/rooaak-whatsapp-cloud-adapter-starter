@@ -24,11 +24,40 @@ npm install
 cp .env.example .env
 ```
 
-3. Configure WhatsApp Cloud webhook URL:
-- Verification URL: `https://<your-host>/webhooks/whatsapp`
-- Verify token: `WHATSAPP_VERIFY_TOKEN`
+3. Generate a verify token (you choose this value):
 
-4. Register Rooaak webhook:
+```bash
+openssl rand -hex 24
+```
+
+4. Set runtime secrets (example for Fly):
+
+```bash
+flyctl secrets set \
+  ROOAAK_API_KEY="..." \
+  ROOAAK_WEBHOOK_SECRET="..." \
+  ROOAAK_AGENT_ID="..." \
+  WHATSAPP_VERIFY_TOKEN="..." \
+  WHATSAPP_APP_SECRET="..." \
+  WHATSAPP_ACCESS_TOKEN="..." \
+  -a rooaak-whatsapp-cloud-adapter-starter
+```
+
+5. Configure WhatsApp Cloud webhook in Meta dashboard:
+- Open [developers.facebook.com/apps](https://developers.facebook.com/apps) and select your app.
+- Left nav: `Use cases` (or `Add products`) -> add/select `WhatsApp`.
+- Left nav under WhatsApp: `Configuration`.
+- In `Webhooks`, click `Edit` or `Manage`.
+- Callback URL: `https://<your-host>/webhooks/whatsapp`
+- Verify token: exactly the same `WHATSAPP_VERIFY_TOKEN` value from step 3.
+- Click `Verify and Save`.
+- Subscribe to `messages` field.
+
+6. Meta credential locations:
+- `WHATSAPP_APP_SECRET`: `App settings` -> `Basic` -> `App Secret` -> `Show`.
+- `WHATSAPP_ACCESS_TOKEN`: WhatsApp product `API Setup` page (use a long-lived/system-user token for production).
+
+7. Register Rooaak webhook:
 - URL: `https://<your-host>/webhooks/rooaak`
 - Events: `message.responded`
 
